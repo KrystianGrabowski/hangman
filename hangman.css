@@ -1,29 +1,41 @@
 body{
     background-color: black;
     font-family: 'PT Mono', monospace;
+    color: azure;
+    font-size: 42px;
 }
 
 #container{
-    width: 1200px;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
 #sentence{
-    width: 1200px;
+    width: 1000px;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 70px;
     margin-bottom: 70px;
-    font-size: 42px;
-    color: azure;
 }
 
 #hangmanImage{
     float: left;
-    width: 600px;
+    width: 500px;
 }
 
 #alphabet{
     float: left;
-    width: 600px;
+    width: 500px;
+}
+
+.character{
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    margin: 5px;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    float: left;
 }
