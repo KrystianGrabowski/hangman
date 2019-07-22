@@ -27,10 +27,11 @@ body{
     float: left;
     width: 500px;
     text-align: center;
+    font-size: 32px;
 }
 
 .character{
-    font-size: 30px;
+    font-size: 28px;
     width: 30px;
     height: 30px;
     border: 2px solid white;
@@ -40,4 +41,11 @@ body{
     padding: 5px;
     cursor: pointer;
     float: left;
+}
+
+.resetButton{
+    border: 2px solid dimgray; 
+    border-radius: 12px;
+    background-color: darkslategray;
+    cursor: pointer;
 }

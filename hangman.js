@@ -33,20 +33,30 @@ String.prototype.replaceCharacter = function(position, character){
     return this.substr(0, position) + character + this.substr(position + 1);
 }
 
-function insertHTML(index, message){
-    document.getElementById(index).innerHTML = message;
-    $("#alphabet").fadeIn(3000);
-}
-
 function FadeElement(name){
     $("#" + name).fadeOut(2000);
 }
+
+function winInfo(){
+    var resetButton = "<div class='resetButton' onclick='location.reload()'>Zagraj ponownie</div>";
+    var x = "Przegrana!<br/>Prawidłowe hasło to:<br/>" + sentence + "</br></br>" + resetButton;
+    document.getElementById("alphabet").innerHTML = x;
+    $("#alphabet").fadeIn(2000);
+}
+
+function loseInfo(){
+    var resetButton = "<div class='resetButton' onclick='location.reload()'>Zagraj ponownie</div>";
+    var x = "Gratulacje!<br/>Podano prawidłowe hasło</br></br>" + resetButton;
+    document.getElementById("alphabet").innerHTML = x;
+    $("#alphabet").fadeIn(2000);
+}
+
 
 function checkLose(){
     if (imageNumber == MAX_IMAGE_NUMBER){
         lockAllKeys();
         FadeElement("alphabet");
-        setTimeout("insertHTML('alphabet', 'Przegrana!<br/>Prawidłowe hasło to:<br/>" + sentence + "')", 2000);
+        setTimeout("winInfo()", 2000);
     }
 }
 
@@ -54,7 +64,7 @@ function checkWin(){
     if (sentence == userSentence){
         lockAllKeys();
         FadeElement("alphabet");
-        setTimeout("insertHTML('alphabet', 'Gratulacje!<br/>Podano prawidłowe hasło')", 2000);
+        setTimeout("loseInfo()", 2000);
     }
 }
 
@@ -72,13 +82,17 @@ function lockKey(charNum){
 
 function keyCorrectAnswer(charNum){
     var keyId = "key" + charNum;
-    document.getElementById(keyId).style.background = "green";
+    document.getElementById(keyId).style.background = "#002A00";
+    document.getElementById(keyId).style.border = "2px solid #00AA00";
+    document.getElementById(keyId).style.color = "#00AA00";
     lockKey(charNum);
 }
 
 function keyWrongAnswer(charNum){
     var keyId = "key" + charNum;
-    document.getElementById(keyId).style.background = "red";
+    document.getElementById(keyId).style.background = "#2A0000";
+    document.getElementById(keyId).style.border = "2px solid #AA0000";
+    document.getElementById(keyId).style.color = "#AA0000";
     lockKey(charNum);
 }
 
