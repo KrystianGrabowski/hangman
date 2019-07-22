@@ -19,10 +19,27 @@ function showSentence(){
 function showKeyboard(){
     var keyBoardStructure = " ";
     for(i=0; i<35; i++){
-        keyBoardStructure += '<div class="character">' + alphabet.charAt(i) + '</div>';
+        keyBoardStructure += '<div class="character" onclick="checkIfCharacterExists(' + 
+                                i + ')">' + alphabet.charAt(i) + '</div>';
         if ((i+1) % 7 == 0) keyBoardStructure += '<div style="clear: both"></div>';  
     }
     document.getElementById("alphabet").innerHTML = keyBoardStructure;
+}
+
+String.prototype.replaceCharacter = function(position, character){
+    if (position >= length || position < 0) return this.toString();
+    return this.substr(0, position) + character + this.substr(position + 1);
+}
+
+function checkIfCharacterExists(charNum){
+    var selectedCharacter = alphabet.charAt(charNum);
+    for(i=0; i<length; i++){
+        if (sentence.charAt(i) == selectedCharacter){
+            userSentence = userSentence.replaceCharacter(i, selectedCharacter);
+        }
+    }
+    console.log(userSentence);
+    showSentence();
 }
 
 function start(){
