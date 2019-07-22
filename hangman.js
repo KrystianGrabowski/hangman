@@ -3,6 +3,7 @@ var length = sentence.length;
 sentence = sentence.toUpperCase();
 var userSentence = createSentenceToShow();
 var alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ";
+var imageNumber = 0;
 
 function createSentenceToShow(){
     var userSentence = "";
@@ -31,14 +32,43 @@ String.prototype.replaceCharacter = function(position, character){
     return this.substr(0, position) + character + this.substr(position + 1);
 }
 
+function FadeImage(){
+    
+}
+
+function Lose(){
+    
+}
+
+function checkLose(){
+    
+}
+
+function Win(){
+    
+}
+
+function checkWin(){
+
+}
+
+function nextImage(){
+    imageNumber++;
+    document.getElementById("hangmanImage").innerHTML = "<img src='images/image" + imageNumber + ".png' width='500' alt=''/>"
+    checkLose();
+}
+
 function checkIfCharacterExists(charNum){
     var selectedCharacter = alphabet.charAt(charNum);
+    var characterFound = false;
     for(i=0; i<length; i++){
         if (sentence.charAt(i) == selectedCharacter){
             userSentence = userSentence.replaceCharacter(i, selectedCharacter);
+            characterFound = true;
+            checkWin();
         }
     }
-    console.log(userSentence);
+    if (!characterFound) nextImage();
     showSentence();
 }
 
