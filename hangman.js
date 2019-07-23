@@ -4,7 +4,7 @@ var length = 0;
 var imageNumber = 0;
 
 const alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ";
-const MAX_IMAGE_NUMBER = 8; 
+const MAX_IMAGE_NUMBER = 8;
 
 //temp categories
 var categories = {
@@ -47,7 +47,7 @@ function showSentence(){
 
 function showKeyboard(){
     var keyBoardStructure = " ";
-    for(i=0; i<35; i++){
+    for(i=0; i<alphabet.length; i++){
         keyBoardStructure += "<div class='character' onclick='checkIfCharacterExists(" + 
                                 i + ")' id='key" + i + "'>" + alphabet.charAt(i) + "</div>";
         if ((i+1) % 7 == 0) keyBoardStructure += '<div style="clear: both"></div>';  
@@ -107,24 +107,16 @@ function lockKey(charNum){
     document.getElementById(keyId).style.cursor = "default";
 }
 
-function keyCorrectAnswer(charNum){
+function keyAnswer(charNum, bgColor, borderColor){
     var keyId = "key" + charNum;
-    document.getElementById(keyId).style.background = "#002A00";
-    document.getElementById(keyId).style.border = "2px solid #00AA00";
-    document.getElementById(keyId).style.color = "#00AA00";
-    lockKey(charNum);
-}
-
-function keyWrongAnswer(charNum){
-    var keyId = "key" + charNum;
-    document.getElementById(keyId).style.background = "#2A0000";
-    document.getElementById(keyId).style.border = "2px solid #AA0000";
-    document.getElementById(keyId).style.color = "#AA0000";
+    document.getElementById(keyId).style.background = bgColor;
+    document.getElementById(keyId).style.border = "2px solid " + borderColor;
+    document.getElementById(keyId).style.color = borderColor;
     lockKey(charNum);
 }
 
 function lockAllKeys(){
-    for(i=0; i<35; i++){
+    for(i=0; i<alphabet.length; i++){
         lockKey(i);   
     }
 }
@@ -140,10 +132,10 @@ function checkIfCharacterExists(charNum){
         }
     }
     if (!characterFound){
-        keyWrongAnswer(charNum);
+        keyAnswer(charNum, "#2A0000", "#AA0000");
         nextImage();
     } else{
-        keyCorrectAnswer(charNum);
+        keyAnswer(charNum, "#002A00", "#00AA00");
     }
     showSentence();
 }
