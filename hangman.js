@@ -1,10 +1,37 @@
-var sentence = "ala ma kota";
-var length = sentence.length; 
-sentence = sentence.toUpperCase();
-var userSentence = createSentenceToShow();
-var alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ";
+var sentence = "";
+var userSentence = ""; 
+var length = 0;
 var imageNumber = 0;
+
+const alphabet = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ";
 const MAX_IMAGE_NUMBER = 8; 
+
+//temp categories
+var categories = {
+    "food": ["banan", "spaghetti", "pierogi"],
+    "profession": ["hydraulik", "informatyk", "maszynista"],
+    "country": ["macedonia", "afganistan", "watykan"],
+    "proverb": ["co za dużo to niezdrowo", "nosił wilk razy kilka ponieśli i wilka", "baba z wozu koniom lżej"]
+}
+
+function setCategory(categoryId){
+    var categoryArray = categories[categoryId];
+    sentence = categoryArray[Math.floor(Math.random()*categoryArray.length)];
+    sentence = sentence.toUpperCase();
+    length = sentence.length;
+    userSentence = createSentenceToShow();
+    showKeyboard();
+    showSentence();
+}
+
+function showCategories(){
+    var categoriesList = "Categories:</br></br>";
+    Object.keys(categories).forEach(function(category){
+        var clickAction = "setCategory('" + category + "')";
+        categoriesList += "<div id=" + category + "' class='categoryItem' onclick=" + clickAction + ">" + category + "</div>";
+    });
+    document.getElementById("alphabet").innerHTML = categoriesList;
+}
 
 function createSentenceToShow(){
     var userSentence = "";
@@ -70,7 +97,7 @@ function checkWin(){
 
 function nextImage(){
     imageNumber++;
-    document.getElementById("hangmanImage").innerHTML = "<img src='images/image" + imageNumber + ".png' width='500' alt=''/>"
+    document.getElementById("hangmanImage").innerHTML = "<img src='images/img" + imageNumber + ".png' width='500' alt=''/>"
     checkLose();
 }
 
@@ -122,8 +149,7 @@ function checkIfCharacterExists(charNum){
 }
 
 function start(){
-    showSentence();
-    showKeyboard();
+    showCategories();
 }
 
 window.onload = start;
