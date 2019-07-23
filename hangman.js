@@ -8,10 +8,10 @@ const MAX_IMAGE_NUMBER = 8;
 
 //temp categories
 var categories = {
-    "food": ["banan", "spaghetti", "pierogi"],
-    "profession": ["hydraulik", "informatyk", "maszynista"],
-    "country": ["macedonia", "afganistan", "watykan"],
-    "proverb": ["co za dużo to niezdrowo", "nosił wilk razy kilka ponieśli i wilka", "baba z wozu koniom lżej"]
+    "jedzenie": ["banan", "spaghetti", "pierogi"],
+    "zawód": ["hydraulik", "informatyk", "maszynista"],
+    "państaw": ["macedonia", "afganistan", "watykan"],
+    "przysłowia": ["co za dużo to niezdrowo", "nosił wilk razy kilka ponieśli i wilka", "baba z wozu koniom lżej"]
 }
 
 function setCategory(categoryId){
@@ -25,7 +25,7 @@ function setCategory(categoryId){
 }
 
 function showCategories(){
-    var categoriesList = "Categories:</br></br>";
+    var categoriesList = "Kategorie:</br></br>";
     Object.keys(categories).forEach(function(category){
         var clickAction = "setCategory('" + category + "')";
         categoriesList += "<div id=" + category + "' class='categoryItem' onclick=" + clickAction + ">" + category + "</div>";
