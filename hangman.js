@@ -10,7 +10,7 @@ const MAX_IMAGE_NUMBER = 8;
 var categories = {
     "jedzenie": ["banan", "spaghetti", "pierogi"],
     "zawód": ["hydraulik", "informatyk", "maszynista"],
-    "państaw": ["macedonia", "afganistan", "watykan"],
+    "państwa": ["macedonia", "afganistan", "watykan"],
     "przysłowia": ["co za dużo to niezdrowo", "nosił wilk razy kilka ponieśli i wilka", "baba z wozu koniom lżej"]
 }
 
